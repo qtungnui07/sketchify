@@ -82,9 +82,7 @@ const ModeButton: React.FC<{
           className="rounded-lg border shadow-none h-10"
         >
           <config.icon className="w-4 h-4 mr-[2px] md:mr-1 bg-inherit" />
-          <span className="hidden md:inline text-sm -mb-3">
-            {config.shortcut}
-          </span>
+          
         </Button>
       </TooltipTrigger>
       <TooltipContent>
@@ -146,31 +144,36 @@ const Toolbar: React.FC = () => {
   }, [handleModeChange]);
 
   return (
-    <nav className="md:bg-white py-2 md:px-4 md:rounded-xl md:border mt-2 md:shadow-md z-50">
-      <ul className="space-x-2 md:space-x-2 flex">
-        {modeConfigs.map((config) => (
-          <li key={config.mode}>
+    <nav className="flex items-center shadow-lg gap-2 p-2 z-10">
+      <ul className="flex items-center gap-2 rounded-lg p-1 max-w-full flex-wrap">
+        {modeConfigs.map((config, index) => (
+          <li key={config.mode} className="relative">
             <ModeButton
               config={config}
               isActive={mode === config.mode}
               onClick={() => handleModeChange(config.mode)}
+              className={`flex items-center justify-center h-8 w-8 rounded-lg ${
+                mode === config.mode ? 'bg-indigo-100' : 'bg-transparent'
+              } hover:bg-gray-200`}
             />
+            <span className="absolute bottom-0 right-0 text-xs text-gray-400">
+              {index + 1}
+            </span>
           </li>
         ))}
         <li>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button
-                  variant="outline"
+                <button
                   onClick={handleDownload}
-                  className="rounded-lg border shadow-none h-10"
+                  className="flex items-center justify-center h-8 w-8 rounded-lg bg-transparent hover:bg-gray-200"
                 >
-                  <Download className="md:w-4 w-3 md:h-4 h-3 mr-[2px] md:mr-1 bg-inherit" />
-                </Button>
+                  <Download className="w-5 h-5 text-gray-600" />
+                </button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Download Image</p>
+                <p className="text-xs">Download Image</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

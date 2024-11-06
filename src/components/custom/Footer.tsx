@@ -14,9 +14,9 @@ const Footer = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
 
   return (
-    <div className="flex justify-center items-center gap-2 md:gap-6 px-2 md:px-6 py-4 w-full select-none cursor-default z-10">
-      <div className="flex gap-2 md:gap-4">
-        <div className="flex gap-1 md:gap-4 items-center">
+    <div className="flex items-center gap-1 px-2  py-4 w-full select-none cursor-default z-10">
+      <div className="flex gap-1 md:gap-1">
+        <div className="flex gap-1 md:gap-1 items-center">
           <Button onClick={() => handleZoom(false)} variant="default">
             <ZoomOut className="w-4 h-4 bg-inherit" />
           </Button>
