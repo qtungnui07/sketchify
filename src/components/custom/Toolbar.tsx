@@ -152,9 +152,6 @@ const Toolbar: React.FC = () => {
               config={config}
               isActive={mode === config.mode}
               onClick={() => handleModeChange(config.mode)}
-              className={`flex items-center justify-center h-8 w-8 rounded-lg ${
-                mode === config.mode ? 'bg-indigo-100' : 'bg-transparent'
-              } hover:bg-gray-200`}
             />
             <span className="absolute bottom-0 right-0 text-xs text-gray-400">
               {index + 1}
