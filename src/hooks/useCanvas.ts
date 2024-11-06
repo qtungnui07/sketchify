@@ -124,7 +124,7 @@ export const useCanvas = () => {
           type: "draw",
           path: newStrokePath,
           color: strokeColor,
-          boundingBox: currentBoundingBox || undefined,
+          
         });
       }
     }

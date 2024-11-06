@@ -76,12 +76,12 @@ const ModeButton: React.FC<{
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
-          variant={isActive ? "default" : "outline"}
+          variant={"ghost"}
           onClick={onClick}
           // disabled={config.disabled}
-          className="rounded-lg border shadow-none h-10"
+          className="rounded-lg shadow-none h-10"
         >
-          <config.icon className="w-4 h-4 mr-[2px] md:mr-1 bg-inherit" />
+          <config.icon className="w-2.5 h-2.5 md:mr-0.1 bg-inherit" />
           
         </Button>
       </TooltipTrigger>
@@ -144,7 +144,7 @@ const Toolbar: React.FC = () => {
   }, [handleModeChange]);
 
   return (
-    <nav className="flex items-center shadow-lg gap-2 p-2 z-10">
+    <nav className="flex items-center shadow-lg border md:rounded-xl gap-1 p-0.5 z-10">
       <ul className="flex items-center gap-2 rounded-lg p-1 max-w-full flex-wrap">
         {modeConfigs.map((config, index) => (
           <li key={config.mode} className="relative">
@@ -153,27 +153,9 @@ const Toolbar: React.FC = () => {
               isActive={mode === config.mode}
               onClick={() => handleModeChange(config.mode)}
             />
-            <span className="absolute bottom-0 right-0 text-xs text-gray-400">
-              {index + 1}
-            </span>
           </li>
         ))}
         <li>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button
-                  onClick={handleDownload}
-                  className="flex items-center justify-center h-8 w-8 rounded-lg bg-transparent hover:bg-gray-200"
-                >
-                  <Download className="w-5 h-5 text-gray-600" />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p className="text-xs">Download Image</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
         </li>
       </ul>
     </nav>
